@@ -5,8 +5,8 @@ const Module = require('module');
 const path = require('path');
 const util = require('util');
 
-// redirect diagnostics_channel requires to the polyfill
-shimmer.wrap(Module.prototype, 'require', function (originalRequire) {
+// Redirect diagnostics_channel requires to the polyfill
+shimmer.wrap(Module.prototype, 'require', function(originalRequire) {
   const polyfillPath = path.join(__dirname, '..');
 
   return function wrappedRequire() {
@@ -18,7 +18,7 @@ shimmer.wrap(Module.prototype, 'require', function (originalRequire) {
   };
 });
 
-// port from node core test/common/index.js
+// Port from node core test/common/index.js
 const mustCallChecks = [];
 
 function noop() {}

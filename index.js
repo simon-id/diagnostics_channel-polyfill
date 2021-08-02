@@ -2,7 +2,7 @@
 
 const util = require('util');
 
-// port from node core lib/internal/errors.js
+// Port from node core lib/internal/errors.js
 class ERR_INVALID_ARG_TYPE extends TypeError {
   constructor(message, actual) {
     super();
@@ -36,7 +36,7 @@ class ERR_INVALID_ARG_TYPE extends TypeError {
         configurable: true,
       },
       toString: {
-        value () {
+        value() {
           return `${this.name} [${this.code}]: ${this.message}`;
         },
         enumerable: false,
@@ -137,9 +137,9 @@ function deleteChannel(name) {
   if (channels[name]) {
     channels[name] = null;
     return true;
-  } else {
-    return false;
   }
+
+  return false;
 }
 
 module.exports = {
