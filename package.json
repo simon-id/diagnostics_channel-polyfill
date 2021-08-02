@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Exposes a polyfill for the Node.js module diagnostics_channel",
   "main": "index.js",
+  "scripts": {
+    "test": "node test/all.js",
+    "lint": "eslint ."
+  },
   "files": [
     "index.js",
     "LICENSE",
@@ -19,6 +23,7 @@
   },
   "homepage": "https://github.com/simon-id/diagnostics_channel-polyfill#readme",
   "devDependencies": {
-    "eslint": "^7.31.0"
+    "eslint": "^7.31.0",
+    "shimmer": "^1.2.1"
   }
 }
