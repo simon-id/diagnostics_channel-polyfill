@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Exposes a polyfill for the Node.js module diagnostics_channel",
   "main": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
     "test": "node test/all.js",
     "lint": "eslint ."
