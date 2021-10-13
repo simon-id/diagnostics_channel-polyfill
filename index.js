@@ -57,15 +57,17 @@ class ActiveChannel {
 
   unsubscribe(subscription) {
     const index = this._subscribers.indexOf(subscription);
-    if (index >= 0) {
-      this._subscribers.splice(index, 1);
+    if (index === -1) return false;
 
-      // When there are no more active subscribers, restore to fast prototype.
-      if (!this._subscribers.length) {
-        // eslint-disable-next-line no-use-before-define
-        Object.setPrototypeOf(this, Channel.prototype);
-      }
+    this._subscribers.splice(index, 1);
+
+    // When there are no more active subscribers, restore to fast prototype.
+    if (!this._subscribers.length) {
+      // eslint-disable-next-line no-use-before-define
+      Object.setPrototypeOf(this, Channel.prototype);
     }
+
+    return true;
   }
 
   get hasSubscribers() {
@@ -102,6 +104,10 @@ class Channel {
     Object.setPrototypeOf(this, ActiveChannel.prototype);
     this._subscribers = [];
     this.subscribe(subscription);
+  }
+
+  unsubscribe() {
+    return false;
   }
 
   get hasSubscribers() {
